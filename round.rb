@@ -6,7 +6,11 @@ class Round
 		@image = Gosu::Image.new(random_picture)
 		@x = x
 		@y = y
-		@score = 0
+		@points = 0
+	end
+
+	def points
+		@points
 	end
 
 	def random_picture
@@ -14,25 +18,25 @@ class Round
 	 	random_picture = random_selection_array.shuffle.sample
 	 	if random_picture == 1
 	 		@img = ("images/elephant.jpg")
-	 		elephant = true
+	 		# elephant == true
 	 	elsif random_picture == 2
 	 		@img = ("images/piglet.jpg")
-	 		piglet = true
+	 		# piglet == true
 	 	else
 	 		@img = ("images/polarbear.jpg")
-	 		polarbear = true
+	 		# polarbear = true
 	 	end
 	end
 
-	def button_down
-		if button_down?(KbW) and polarbear == true
-			@score += 25
-		elsif button_down?(KbE) and piglet == true
-			@score += 25
-		elsif button_down?(KbR) and elephant == true
-			@score += 25
-		end
-	end
+	# def button_down
+	# 	if button_down?(KbW) and polarbear == true
+	# 		@score += 25
+	# 	elsif button_down?(KbE) and piglet == true
+	# 		@score += 25
+	# 	elsif button_down?(KbR) and elephant == true
+	# 		@score += 25
+	# 	end
+	# end
 
 
 	def draw

@@ -25,6 +25,7 @@ class BanterQuiz < Gosu::Window
    @option_2.draw
    @option_3.draw
    @option_4.draw
+   @font.draw("Score: #{@round.points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
   end
 
 end
