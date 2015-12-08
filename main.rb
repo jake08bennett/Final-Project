@@ -1,6 +1,7 @@
 require "gosu"
 require_relative "round"
 require_relative "options"
+require_relative "z_order"
 
 class BanterQuiz < Gosu::Window
 
@@ -12,9 +13,21 @@ class BanterQuiz < Gosu::Window
    	@option_2 = Options.new(585, 620, Gosu::Image.new("images/Option-2.png"))
    	@option_3 = Options.new(800, 500, Gosu::Image.new("images/Option-3.png"))
    	@option_4 = Options.new(800, 620, Gosu::Image.new("images/Option-4.png"))
+    @font = Gosu::Font.new(20)
 	end
 
   def update
+    if Gosu::button_down? Gosu::KbSpace
+     @round_image.check_option_2
+   end
+    if Gosu::button_down? Gosu::KbLeft or Gosu::button_down? Gosu::GpLeft then
+     @round_image.check_option_1
+    end  
+    if Gosu::button_down? Gosu::KbRight or Gosu::button_down? Gosu::GpRight then
+     @round_image.check_option_3
+    end
+
+    @round_image.points
 
   end
 
@@ -25,7 +38,7 @@ class BanterQuiz < Gosu::Window
    @option_2.draw
    @option_3.draw
    @option_4.draw
-   @font.draw("Score: #{@round.points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Score: #{@round_image.points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
   end
 
 end

@@ -7,26 +7,48 @@ class Round
 		@x = x
 		@y = y
 		@points = 0
+		@random_picture = random_picture
 	end
 
-	def points
-		@points
-	end
+	
 
 	def random_picture
 		random_selection_array = [1, 2, 3]
 	 	random_picture = random_selection_array.shuffle.sample
 	 	if random_picture == 1
 	 		@img = ("images/elephant.jpg")
-	 		# elephant == true
 	 	elsif random_picture == 2
 	 		@img = ("images/piglet.jpg")
-	 		# piglet == true
-	 	else
+	 	elsif random_picture == 3
 	 		@img = ("images/polarbear.jpg")
-	 		# polarbear = true
 	 	end
 	end
+
+
+
+	def check_option_1
+		if @random_picture == 1
+			@points += 25
+		end
+	end
+
+
+	def check_option_2
+		if @random_picture == 2
+			@points += 25
+		end
+	end
+
+
+	def check_option_3
+		if random_picture == 3
+			@points += 25
+		end
+	end
+
+	def points
+		@points
+	end 
 
 	# def button_down
 	# 	if button_down?(KbW) and polarbear == true
