@@ -14,18 +14,32 @@ class BanterQuiz < Gosu::Window
    	@option_3 = Options.new(800, 500, Gosu::Image.new("images/Option-3.png"))
    	@option_4 = Options.new(800, 620, Gosu::Image.new("images/Option-4.png"))
     @font = Gosu::Font.new(20)
+    @points = 0
 	end
 
   def update
-    if Gosu::button_down? Gosu::KbSpace
-     @round_image.check_option_2
-   end
-    if Gosu::button_down? Gosu::KbLeft or Gosu::button_down? Gosu::GpLeft then
-     @round_image.check_option_1
-    end  
-    if Gosu::button_down? Gosu::KbRight or Gosu::button_down? Gosu::GpRight then
-     @round_image.check_option_3
+    if Gosu::button_down? Gosu::KbW
+      puts "pushed down button"
+      if @round_image.button_w 
+        @points += 25
+        puts "adding points"
+      end
     end
+    if Gosu::button_down? Gosu::KbQ
+      if @round_image.button_q == true
+        @points += 25
+      end
+    end  
+    if Gosu::button_down? Gosu::KbE
+      if @round_image.button_e == true
+        @points += 25
+      end
+    end
+    if Gosu::button_down? Gosu::KbR
+      if @round_image.button_r == true
+        @points += 25
+      end
+    end 
 
     @round_image.points
 
@@ -38,7 +52,7 @@ class BanterQuiz < Gosu::Window
    @option_2.draw
    @option_3.draw
    @option_4.draw
-   @font.draw("Score: #{@round_image.points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Score: #{@points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
   end
 
 end
