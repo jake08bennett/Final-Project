@@ -19,10 +19,8 @@ class BanterQuiz < Gosu::Window
 
   def update
     if Gosu::button_down? Gosu::KbW
-      puts "pushed down button"
-      if @round_image.button_w 
+      if @round_image.button_w  == true
         @points += 25
-        puts "adding points"
       end
     end
     if Gosu::button_down? Gosu::KbQ

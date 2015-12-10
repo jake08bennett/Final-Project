@@ -13,7 +13,7 @@ class Round
 	
 
 	def random_picture_selection
-		random_selection_array = [2, 2, 2, 2]
+		random_selection_array = [1, 2, 3, 4]
 	 	@random_picture = random_selection_array.shuffle.sample
 	 	if @random_picture == 4
 	 		@img = ("images/elephant.jpg")
@@ -27,24 +27,25 @@ class Round
 	end
 
 	def button_q
-		if @random_picture == 1
+		if @img == ("images/tiger.jpg")
 			true
 		end
 	end
 
 	def button_w
-		@random_picture == 2
-		puts"true"
+		if @img == ("images/polarbear.jpg")
+			true
+		end
 	end
 
 	def button_e
-		if @random_picture == 3
+		if @img == ("images/piglet.jpg")
 			true
 		end
 	end
 	
 	def button_r
-		if @random_picture == 4
+		if @img == ("images/elephant.jpg")
 			true
 		end
 	end
