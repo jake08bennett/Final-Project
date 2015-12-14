@@ -2,6 +2,7 @@ require "gosu"
 require_relative "round"
 require_relative "options"
 require_relative "z_order"
+require_relative "timer"
 
 class BanterQuiz < Gosu::Window
 
@@ -15,12 +16,15 @@ class BanterQuiz < Gosu::Window
    	@option_2 = Options.new(585, 620, Gosu::Image.new("images/Option-2.png"))
    	@option_3 = Options.new(800, 500, Gosu::Image.new("images/Option-3.png"))
    	@option_4 = Options.new(800, 620, Gosu::Image.new("images/Option-4.png"))
-    @score = Gosu::Font.new(20)
-    @round_command1 = Gosu::Font.new(20)
-    @round_command2 = Gosu::Font.new(20)
-    @round_command3 = Gosu::Font.new(20)
+  
     @points = 0
+
+
+  
+    @timer = Timer.new(5)
+    @font = Gosu::Font.new(20)
 	end
+
 
   def update
     if (Gosu::button_down? Gosu::KbW) && (Gosu::button_down? Gosu::KbRight)
@@ -91,7 +95,9 @@ class BanterQuiz < Gosu::Window
       end
     end 
 
- 
+    
+
+    
 
     @round_image1.points
 
@@ -104,17 +110,33 @@ class BanterQuiz < Gosu::Window
    @option_2.draw
    @option_3.draw
    @option_4.draw
-   @score.draw("Score: #{@points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Score: #{@points}", 20, 20, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Time Left: #{@timer.print_out}", 20, 40, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+
    
-   @round_command1.draw("Hold right arrow for round 1", 20, 40, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
-   @round_command2.draw("Hold up arrow for round 2", 20, 60, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
-   @round_command3.draw("Hold down arrow for round 2", 20, 80, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Hold right arrow for round 1", 20, 60, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Hold up arrow for round 2", 20, 80, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
+   @font.draw("Hold down arrow for round 3", 20, 100, ZOrder::UI, 1.0, 1.0, 0xff_ffff00)
 
    @round_image1.draw  if Gosu::button_down? Gosu::KbRight
    @round_image2.draw if Gosu::button_down? Gosu::KbUp
    @round_image3.draw if Gosu::button_down? Gosu::KbDown
   end
 
+
+
+
+  # def timer_countdown
+  #   while @time_left != 0
+  #     sleep(1)
+  #     @time_left -= 1
+  #   end
+
+  #   if @time_left == 0
+  #     close
+  #   end
+  # end
+  
 end
     
 
