@@ -21,7 +21,7 @@ class BanterQuiz < Gosu::Window
 
 
   
-    @timer = Timer.new(5)
+    @timer = Timer.new(60)
     @font = Gosu::Font.new(20)
 	end
 
